@@ -17,7 +17,7 @@
 | -------------------------------------------------------------------
 |
 | These are the things you can load automatically:
-|
+| 
 | 1. Packages
 | 2. Libraries
 | 3. Helper files
@@ -52,8 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array();
-
+$autoload['libraries'] = array('database','form_validation','calendar','my_form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -64,8 +63,7 @@ $autoload['libraries'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
-
+$autoload['helper'] = array('form','url','language','data');
 
 /*
 | -------------------------------------------------------------------
@@ -96,7 +94,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array();
+$autoload['language'] = array('site_content');
 
 
 /*

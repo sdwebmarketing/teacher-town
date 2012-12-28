@@ -1,0 +1,9 @@
+form .formItem { float: left; clear: left; width: 100%; }
+form .formItem > label { float: left; width: 20%; text-align: right; }
+form span.formGroup { float: left; width: 50%; }
+form span.formGroup span { float: left; clear: left; width: 100%; }
+input.timePicker { width: 80px; }
+form input[type=submit] { margin-left: 20%; }
+form .addressChoices { display: none; }
+
+.hidden { display: none; }

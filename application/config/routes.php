@@ -37,10 +37,9 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
-$route['default_controller'] = 'pages/view';
+$route['users/add_user'] = 'users/add_user';
 $route['(:any)'] = 'pages/view/$1';
-
+$route['default_controller'] = 'pages/view';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

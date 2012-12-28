@@ -1,1 +1,3 @@
-<h1>About us</h1>
+<h1><?php echo lang("site_about_heading"); ?></h1>
+
+<?php phpinfo(); ?>
