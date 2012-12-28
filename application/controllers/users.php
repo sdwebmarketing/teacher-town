@@ -16,14 +16,16 @@ class Users extends CI_Controller {
 		
 		$this->form_validation->set_rules('instrument', 'Instrument', 'required');
 		$this->form_validation->set_rules('bio', 'Biography', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[usertest.email]');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('confirmEmail', 'Confirm email', 'required|valid_email');
-		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[usertest.username]');
+		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.username]');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('confirmPassword', 'Confirm password', 'required|matches[password]');
+		$this->form_validation->set_rules('contactNumber', 'Contact number', 'required');
 		
 		$this->form_validation->set_rules('businessLocation', 'Business location', 'required|is_unique[locations.name]');
 		$this->form_validation->set_rules('address', 'Address', 'required');
+		$this->form_validation->set_rules('cost', 'Cost', 'required');
 		
 		if ($this->form_validation->run() === FALSE)
 		{
@@ -37,7 +39,7 @@ class Users extends CI_Controller {
 		else
 		{
 			$this->load->model('users_model');
-			$this->users_model->set_users();
+			$this->users_model->set_users("1");
 			$this->load->view('pages/registration-success');
 		}
 		

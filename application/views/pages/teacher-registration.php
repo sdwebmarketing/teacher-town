@@ -3,63 +3,63 @@
 <?php echo form_open('users/add_user') ?>
 
 <div class="formItem">
-	<label for="email">Email:</label>
+	<?php echo lang('site_label_email', 'email'); ?>
 	<span class="formGroup">
 		<span>
-			<input type="text" id="email" name="email" />
+			<input type="text" id="email" name="email" value="<?php echo set_value('email'); ?>" />
 		</span>
 		<?php echo form_error('email'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="confirmEmail">Confirm email:</label>
+	<?php echo lang('site_label_confirm_email', 'confirmEmail'); ?>
 	<span class="formGroup">
 		<span>
-			<input type="text" id="confirmEmail" name="confirmEmail" />
+			<input type="text" id="confirmEmail" name="confirmEmail" value="<?php echo set_value('confirmEmail'); ?>" />
 		</span>
 		<?php echo form_error('confirmEmail'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="username">Username:</label>
+	<?php echo lang('site_label_username', 'username'); ?>
 	<span class="formGroup">
 		<span>
-			<input type="text" id="username" name="username" />
+			<input type="text" id="username" name="username" value="<?php echo set_value('username'); ?>" />
 		</span>
 		<?php echo form_error('username'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="password">Password:</label>
+	<?php echo lang('site_label_password', 'password'); ?>
 	<span class="formGroup">
 		<span>
-			<input type="password" id="password" name="password" />
+			<input type="password" id="password" name="password" value="<?php echo set_value('password'); ?>" />
 		</span>
 		<?php echo form_error('password'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="confirmPassword">Confirm Password:</label>
+	<?php echo lang('site_label_confirm_password', 'confirmPassword'); ?>
 	<span class="formGroup">
 		<span>
-			<input type="password" id="confirmPassword" name="confirmPassword" />
+			<input type="password" id="confirmPassword" name="confirmPassword" value="<?php echo set_value('confirmPassword'); ?>" />
 		</span>
 		<?php echo form_error('confirmPassword'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="title">Name:</label> 
+	<?php echo lang('site_label_name', 'fname'); ?>
 	<span class="formGroup">
 		<span class="firstName">
-			<input type="input" value="" name="fname" placeholder="First name" />
+			<input type="input" value="<?php echo set_value('fname'); ?>" name="fname" placeholder="First name" />
 		</span>
 		<span class="surname">
-			<input type="input" value="" name="surname" placeholder="Surname" />
+			<input type="input" value="<?php echo set_value('surname'); ?>" name="surname" placeholder="Surname" />
 		</span>
 		<?php echo form_error('fname'); ?>
 		<?php echo form_error('surname'); ?>
@@ -67,23 +67,33 @@
 </div>
 
 <div class="formItem">
-	<label for="text">Date of Birth:</label>
+	<?php echo lang('site_label_contact_number', 'contactNumber'); ?>
 	<span class="formGroup">
 		<span>
-			<input type="text" id="dobPicker" name="dob" placeholder="18/03/1986" />
+			<input type="text" name="contactNumber" id="contactNumber" value="<?php echo set_value('contactNumber'); ?>" />
+		</span>
+		<?php echo form_error('contactNumber'); ?>
+	</span>
+</div>
+
+<div class="formItem">
+	<?php echo lang('site_label_date_of_birth', 'dob'); ?>
+	<span class="formGroup">
+		<span>
+			<input type="text" id="dobPicker" name="dob" value="<?php echo set_value('dob'); ?>" placeholder="18/03/1986" />
 		</span>
 		<?php echo form_error('dob'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="ability">Ability:</label>
+	<?php echo lang('site_label_ability', 'ability'); ?>
 	<span class="formGroup">
 		<span>
 			<select name="ability">
-				<option value="beginner">Beginner</option>
-				<option value="intermediate">Intermediate</option>
-				<option value="advanced">Advanced</option>
+				<option value="beginner" <?php echo set_select('ability', 'beginner'); ?> >Beginner</option>
+				<option value="intermediate" <?php echo set_select('ability', 'intermediate'); ?> >Intermediate</option>
+				<option value="advanced" <?php echo set_select('ability', 'advanced'); ?> >Advanced</option>
 			</select>
 		</span>
 		<?php echo form_error('ability'); ?>
@@ -91,93 +101,93 @@
 </div>
 
 <div class="formItem">
-	<label>Availability:</label>
+	<?php echo lang('site_label_availability', 'mondayFromTime'); ?>
 	<span class="formGroup">
 		<?php echo form_error('mondayFromTime'); ?>
 		<?php echo form_error('mondayToTime'); ?>
 		<span>
-			<label for="mondayFromTime">Monday:</label>
-			<input type="text" class="timePicker" name="mondayFromTime" />
-			to
-			<input type="text" class="timePicker" name="mondayToTime" />
-			<input name="useForEntireWeek" id="useForEntireWeek" type="checkbox" /> <label for="useForEntireWeek">Use Monday time for entire week (this doesn't do anything at the moment, but other dates do default to Monday values if not set)</label>
+			<?php echo lang('site_label_availability', 'mondayFromTime'); ?>
+			<input type="text" class="timePicker" name="mondayFromTime" value="<?php echo set_value('mondayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="mondayToTime" value="<?php echo set_value('mondayToTime'); ?>" />
+			<input name="useForEntireWeek" id="useForEntireWeek" type="checkbox" value="1" <?php echo set_checkbox('useForEntireWeek[]', '1'); ?> /> <label for="useForEntireWeek">Use Monday time for entire week (this doesn't do anything at the moment, but other dates do default to Monday values if not set)</label>
 		</span>
 		<span>
-			<label for="tuesdayFromTime">Tuesday:</label>
-			<input type="text" class="timePicker" name="tuesdayFromTime" />
-			to
-			<input type="text" class="timePicker" name="tuesdayToTime" />
+			<?php echo lang('site_label_tuesday_to_time', 'tuesdayFromTime'); ?>
+			<input type="text" class="timePicker" name="tuesdayFromTime" value="<?php echo set_value('tuesdayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="tuesdayToTime" value="<?php echo set_value('tuesdayToTime'); ?>" />
 		</span>
 		<span>
-			<label for="wednesdayFromTime">Wednesday:</label>
-			<input type="text" class="timePicker" name="wednesdayFromTime" />
-			to
-			<input type="text" class="timePicker" name="wednesdayToTime" />
+			<?php echo lang('site_label_wednesday_to_time', 'wednesdayFromTime'); ?>
+			<input type="text" class="timePicker" name="wednesdayFromTime" value="<?php echo set_value('wednesdayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="wednesdayToTime" value="<?php echo set_value('wednesdayToTime'); ?>" />
 		</span>
 		<span>
-			<label for="thursdayFromTime">Thursday:</label>
-			<input type="text" class="timePicker" name="thursdayFromTime" />
-			to
-			<input type="text" class="timePicker" name="thursdayToTime" />
+			<?php echo lang('site_label_thursday_to_time', 'thursdayFromTime'); ?>
+			<input type="text" class="timePicker" name="thursdayFromTime" value="<?php echo set_value('thursdayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="thursdayToTime" value="<?php echo set_value('thursdayToTime'); ?>" />
 		</span>
 		<span>
-			<label for="fridayFromTime">Friday:</label>
-			<input type="text" class="timePicker" name="fridayFromTime" />
-			to
-			<input type="text" class="timePicker" name="fridayToTime" />
+			<?php echo lang('site_label_friday_to_time', 'fridayFromTime'); ?>
+			<input type="text" class="timePicker" name="fridayFromTime" value="<?php echo set_value('fridayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="fridayToTime" value="<?php echo set_value('fridayToTime'); ?>" />
 		</span>
 		<span>
-			<label for="saturdayFromTime">Saturday:</label>
-			<input type="text" class="timePicker" name="saturdayFromTime" />
-			to
-			<input type="text" class="timePicker" name="saturdayToTime" />
+			<?php echo lang('site_label_saturday_to_time', 'saturdayFromTime'); ?>
+			<input type="text" class="timePicker" name="saturdayFromTime" value="<?php echo set_value('saturdayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="saturdayToTime" value="<?php echo set_value('saturdayToTime'); ?>" />
 		</span>
 		<span>
-			<label for="sundayFromTime">Sunday:</label>
-			<input type="text" class="timePicker" name="sundayFromTime" />
-			to
-			<input type="text" class="timePicker" name="sundayToTime" />
+			<?php echo lang('site_label_sunday_to_time', 'sundayFromTime'); ?>
+			<input type="text" class="timePicker" name="sundayFromTime" value="<?php echo set_value('sundayFromTime'); ?>" />
+			<?php echo lang('site_label_to'); ?>
+			<input type="text" class="timePicker" name="sundayToTime" value="<?php echo set_value('sundayToTime'); ?>" />
 		</span>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="businessLocation">Name of Business:</label>
+	<?php echo lang('site_label_name_of_business', 'businessLocation'); ?>
 	<span class="formGroup">
-		<input type="text" class="businessLocation" name="businessLocation" />
+		<input type="text" class="businessLocation" name="businessLocation" value="<?php echo set_value('businessLocation'); ?>" />
 		<?php echo form_error('businessLocation'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="houseNumber">Location:</label>
+	<?php echo lang('site_label_location', 'houseNumber'); ?>
 	<span class="formGroup">
 		<span>
-			<label for="houseNumber">House number:</label>
-			<input type="text" value="" id="houseNumber" name="houseNumber" />
-			<label for="postCode">Postcode:</label>
-			<input type="text" value="" id="postCode" class="postCode" name="postcode" />
+			<?php echo lang('site_label_house_number', 'houseNumber'); ?>
+			<input type="text" id="houseNumber" name="houseNumber" value="<?php echo set_value('houseNumber'); ?>" />
+			<?php echo lang('site_label_postcode', 'postCode'); ?>
+			<input type="text" id="postCode" class="postCode" name="postcode" value="<?php echo set_value('postcode'); ?>" />
 			<input type="button" value="Find postcode" class="postCodeFindSubmit" />
 			<div id="addressResult">
 				<select onclick='if($.browser.msie && $.browser.version=="6.0") alert("Thanks. Your address selection will now be populated into the order form."); $("#address").val(info[this.value].address); $("#city").val(info[this.value].town); $("#county").val(info[this.value].county); $("#postcode").val(info[this.value].postcode);' class="addressChoices" id="addressResults"></select>
 			</div>
-			<textarea class="hidden" disabled="disabled" id="resultSelected"></textarea>
-			<button class="hidden" id="useAddress">Use selected address</button>
-			<input type="hidden" name="address" id="address" />
-			<input type="hidden" name="lat" id="lat" />
-			<input type="hidden" name="lng" id="lng" />
+			<textarea class="<?php if (!set_value('address')) { ?>hidden<?php }; ?>" disabled="disabled" id="resultSelected"><?php echo set_value('address'); ?></textarea>
+			<button class="hidden" id="useAddress"><?php echo lang('site_btn_select_address'); ?></button>
+			<input type="hidden" value="<?php echo set_value('address'); ?>" name="address" id="address" />
+			<input type="hidden" value="<?php echo set_value('lat'); ?>" name="lat" id="lat" />
+			<input type="hidden" value="<?php echo set_value('lng'); ?>" name="lng" id="lng" />
 		</span>
 		<?php $latError = form_error('address'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<label for="instrument">Which instrument/s do you specialise in?:</label>
+	<?php echo lang('site_label_instrument', 'instrument'); ?>
 	<span class="formGroup">
 		<span>
 			<select name="instrument" id="instrument">
-				<?php foreach ($instruments->result_array() as $row) { ?>
-					<option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+				<?php foreach ($instruments->result_array() as $row) { $rowId = $row['id']; ?>
+					<option value="<?php echo $row['id']; ?>" <?php echo set_select('instrument', $rowId); ?> ><?php echo $row['name']; ?></option>
 				<?php }; ?>
 			</select>
 		</span>
@@ -186,17 +196,27 @@
 </div>
 
 <div class="formItem">
-	<label for="bio">Bio (what makes you different?):</label>
+	<?php echo lang('site_label_cost', 'cost'); ?>
 	<span class="formGroup">
 		<span>
-			<textarea name="bio" id="bio"></textarea>
+			<input type="text" name="cost" id="cost" value="<?php echo set_value('cost'); ?>" />
+		</span>
+		<?php echo form_error('cost'); ?>
+	</span>
+</div>
+
+<div class="formItem">
+	<?php echo lang('site_label_bio', 'bio'); ?>
+	<span class="formGroup">
+		<span>
+			<textarea name="bio" id="bio"><?php echo set_value('bio'); ?></textarea>
 		</span>
 		<?php echo form_error('bio'); ?>
 	</span>
 </div>
 
 <div class="formItem">
-	<input type="submit" name="submit" value="Create dummy user" /> 
+	<input type="submit" name="submit" value="<?php echo lang('site_btn_create_user'); ?>" /> 
 </div>
 
 </form>

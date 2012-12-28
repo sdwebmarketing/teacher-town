@@ -12,7 +12,7 @@ class Users_model extends CI_Model {
 		return $sql;
 	}
 	
-	public function set_users()
+	public function set_users($userType)
 	{
 		
 		$name = $this->input->post('fname') . " " . $this->input->post('surname');
@@ -68,9 +68,12 @@ class Users_model extends CI_Model {
 				'email' => $this->input->post('email'),
 				'password' => $this->input->post('password'),
 				'locationId' => $locationInsertId,
+				'userTypeId' => $userType,
+				'cost' => $this->input->post('cost'),
+				'contactNumber' => $this->input->post('contactNumber'),
 		);
 		
-		return $this->db->insert('usertest', $data);
+		return $this->db->insert('users', $data);
 		
 	}
 	
