@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?php echo $title ?></title>
+	<title><?php if (!empty($title)) { echo $title; } ?></title>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>themes/iTeach/jquery.timepicker.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>themes/iTeach/main.css" />

@@ -45,10 +45,24 @@ class Users_model extends CI_Model {
 		// serialize for mysql db array storage
 		$availability = serialize($availability);
 		
+		$addressLine1 = $this->input->post('addressLine1');
+		$addressLine2 = $this->input->post('addressLine2');
+		
+		// address line 2 can be empty so check if comma needed
+		if (!empty($addressLine2)) {
+			$addressLine2 .= ', ';
+		}
+		
+		$city = $this->input->post('addressCity');
+		
+		// format address ready for sql insertion
+		$address = $addressLine1 . $addressLine2 . ', ' . $city;
+		
 		// insert location first as need locationId for users table 
 		$locationData = array(
 			'name' => $this->input->post('businessLocation'),
-			'address' => $this->input->post('address'),
+			'address' => $address,
+			'postcode' => $this->input->post('postcode'),
 			'lat' => $this->input->post('lat'),
 			'lng' => $this->input->post('lng'),
 		);

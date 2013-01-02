@@ -24,7 +24,12 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('contactNumber', 'Contact number', 'required');
 		
 		$this->form_validation->set_rules('businessLocation', 'Business location', 'required|is_unique[locations.name]');
-		$this->form_validation->set_rules('address', 'Address', 'required');
+		$this->form_validation->set_rules('addressLine1', 'Line 1', 'required');
+		$this->form_validation->set_rules('addressCity', 'Town/City', 'required');
+		$this->form_validation->set_rules('postcode', 'Postcode', 'required');
+		$this->form_validation->set_rules('lat', 'Latitude', 'required');
+		$this->form_validation->set_rules('lng', 'Longitude', 'required');
+		
 		$this->form_validation->set_rules('cost', 'Cost', 'required');
 		
 		if ($this->form_validation->run() === FALSE)

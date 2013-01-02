@@ -7,3 +7,6 @@ form input[type=submit] { margin-left: 20%; }
 form .addressChoices { display: none; }
 
 .hidden { display: none; }
+
+.listingsArea { padding-right: 5%; width: 35%; float: left; display: block; }
+.mapArea { width: 55%; float: left; display: block; margin-right: 5%; }

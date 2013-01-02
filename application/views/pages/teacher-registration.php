@@ -1,6 +1,6 @@
 <h1><?php echo lang("site_teacher_registration_heading"); ?></h1>
 
-<?php echo form_open('users/add_user') ?>
+<?php echo form_open('teacher-registration') ?>
 
 <div class="formItem">
 	<?php echo lang('site_label_email', 'email'); ?>
@@ -163,20 +163,23 @@
 	<?php echo lang('site_label_location', 'houseNumber'); ?>
 	<span class="formGroup">
 		<span>
-			<?php echo lang('site_label_house_number', 'houseNumber'); ?>
-			<input type="text" id="houseNumber" name="houseNumber" value="<?php echo set_value('houseNumber'); ?>" />
+			<?php echo lang('site_label_address_line_1', 'addressLine1'); ?>
+			<input type="text" id="addressLine1" name="addressLine1" value="<?php echo set_value('addressLine1'); ?>" />
+		</span>
+		<span>
+			<?php echo lang('site_label_address_line_2', 'addressLine2'); ?>
+			<input type="text" id="addressLine2" name="addressLine2" value="<?php echo set_value('addressLine2'); ?>" />
+		</span>
+		<span>
+			<?php echo lang('site_label_address_city', 'addressCity'); ?>
+			<input type="text" id="addressCity" name="addressCity" value="<?php echo set_value('addressCity'); ?>" />
+		</span>
+		<span>	
 			<?php echo lang('site_label_postcode', 'postCode'); ?>
 			<input type="text" id="postCode" class="postCode" name="postcode" value="<?php echo set_value('postcode'); ?>" />
-			<input type="button" value="Find postcode" class="postCodeFindSubmit" />
-			<div id="addressResult">
-				<select onclick='if($.browser.msie && $.browser.version=="6.0") alert("Thanks. Your address selection will now be populated into the order form."); $("#address").val(info[this.value].address); $("#city").val(info[this.value].town); $("#county").val(info[this.value].county); $("#postcode").val(info[this.value].postcode);' class="addressChoices" id="addressResults"></select>
-			</div>
-			<textarea class="<?php if (!set_value('address')) { ?>hidden<?php }; ?>" disabled="disabled" id="resultSelected"><?php echo set_value('address'); ?></textarea>
-			<button class="hidden" id="useAddress"><?php echo lang('site_btn_select_address'); ?></button>
-			<input type="hidden" value="<?php echo set_value('address'); ?>" name="address" id="address" />
-			<input type="hidden" value="<?php echo set_value('lat'); ?>" name="lat" id="lat" />
-			<input type="hidden" value="<?php echo set_value('lng'); ?>" name="lng" id="lng" />
 		</span>
+		<input type="hidden" value="<?php echo set_value('lat'); ?>" name="lat" id="lat" />
+		<input type="hidden" value="<?php echo set_value('lng'); ?>" name="lng" id="lng" />
 		<?php $latError = form_error('address'); ?>
 	</span>
 </div>
