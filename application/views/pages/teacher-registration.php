@@ -56,10 +56,10 @@
 	<?php echo lang('site_label_name', 'fname'); ?>
 	<span class="formGroup">
 		<span class="firstName">
-			<input type="input" value="<?php echo set_value('fname'); ?>" name="fname" placeholder="First name" />
+			<input type="text" value="<?php echo set_value('fname'); ?>" name="fname" placeholder="First name" />
 		</span>
 		<span class="surname">
-			<input type="input" value="<?php echo set_value('surname'); ?>" name="surname" placeholder="Surname" />
+			<input type="text" value="<?php echo set_value('surname'); ?>" name="surname" placeholder="Surname" />
 		</span>
 		<?php echo form_error('fname'); ?>
 		<?php echo form_error('surname'); ?>
@@ -222,4 +222,4 @@
 	<input type="submit" name="submit" value="<?php echo lang('site_btn_create_user'); ?>" /> 
 </div>
 
-</form>
+<?php echo form_close(); ?>

@@ -41,6 +41,7 @@
 /* My routes */
 $route['teacher-registration'] = 'users/add_user';
 $route['ajax_results'] = 'search/ajax_results';
+$route['search-listings/im-here'] = 'search/geo_results';
 $route['search-listings'] = 'search/results';
 $route['teacher/(:any)/(:num)'] = 'teachers/get_teacher/$2';
 $route['(:any)'] = 'pages/view/$1';

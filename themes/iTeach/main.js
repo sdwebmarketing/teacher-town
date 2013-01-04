@@ -65,8 +65,8 @@ function errorFindingLocation() {
 }
 
 function storeLngLatCookie(position) {
-	setCookie('loclng', position.coords.longitude, 1, '/');
-	setCookie('loclat', position.coords.latitude, 1, '/');
+	$('#lat').val(position.coords.latitude);
+	$('#lng').val(position.coords.longitude);
 }
 
 // Geocoding
@@ -125,8 +125,13 @@ function clearLocations() {
 function searchLocationsNear(center) {
 	clearLocations();
 	var radius = document.getElementById('radiusSelect').value;
+	var instrumentIds = getUrlVars()["instruments"];
 	var searchUrl = '/teacher-town/index.php/ajax_results?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
- 
+	
+	if (!isEmpty(instrumentIds)) {
+		searchUrl = searchUrl + "&instruments=" + instrumentIds;
+	}
+	
 	downloadUrl(searchUrl, function(data) {
 		var xml = parseXml(data);
 		var markerNodes = xml.documentElement.getElementsByTagName("marker");
@@ -255,20 +260,45 @@ $(document).ready(function(){
 		grabLongAndLat();
 	});
 	
-	// HTML5: use my location
-	$('form input.useLocation').click(function(e){
+	// HTML5: use my location redirect form
+	$('form.redirectForm input.useLocation').click(function(e){
 		e.preventDefault();
 		// Set to disabled as we don't want post code to be populated
 		$('#addressInput').attr('disabled','disabled');
 		getLocation();
-		$(this).parent('form').submit();
+		$(this).attr('disabled','disabled');
+		$(this).attr("Value","Got it! Hit 'Search'");
 	});
 	
-	// If search locations button is pressed
+	// HTML5: use my location ajax form
+	$('form.ajaxForm input.useLocation').click(function(e){
+		e.preventDefault();
+		// Set to disabled as we don't want post code to be populated
+		getLocation();
+		$(this).attr('disabled','disabled');
+		$(this).attr("Value","Got it! Hit 'Search'");
+	});
+	
+	// If search locations button (ajax) is pressed
 	$('.searchLocations[type=button]').click(function() {
-		searchLocations($("#addressInput").val());
+		var address = $("#addressInput").val();
+		if (!isEmpty(address)) {
+			searchLocations(address);
+		} else {
+			// check if search-ajax use my location function is beign used
+			var center = new google.maps.LatLng($("#lat").val(), $("#lng").val());
+			if (!isEmpty(center.Ya) && !isEmpty(center.Za)) {
+				searchLocationsNear(center);
+			}
+		}
 	});
 	
+	// If search locations submit is pressed (reload or redirect)
+	$('.searchLocations[type=submit]').click(function(e) {
+		e.preventDefault();
+		$(this).parent("form").find(".useLocation").attr("disabled","disabled");
+		$(this).parent("form").submit();
+	});
 });
 
 $(window).load(function() {
@@ -278,16 +308,17 @@ $(window).load(function() {
 		load();
 	}
 	
-	// If postcode GET URL param exists and has a value, load results. 
-	// Else, check if lnglat cookie is stored.
-	urlAddress = getUrlVars()["pc"];
+	// If address param exists and has a value, load results. 
+	urlAddress = getUrlVars()["address"];
 	if (!isEmpty(urlAddress)) {
 		searchLocations(urlAddress);
 	} else {
-		var lngLatCookie = new google.maps.LatLng(getCookie('loclat'),getCookie('loclng'));
-		if (!isEmpty(lngLatCookie.Ya) || !isEmpty(lngLatCookie.Za)) {
-			searchLocationsNear(lngLatCookie);
+		// If lat and lng param exists and has a value, load results. 
+		urlLat = getUrlVars()["lat"];
+		urlLng = getUrlVars()["lng"];
+		if (!isEmpty(urlLat) && !isEmpty(urlLng)) {
+			var center = new google.maps.LatLng(urlLat, urlLng);
+			searchLocationsNear(center);
 		}
 	}
-	
 });

@@ -45,7 +45,7 @@ class Users extends CI_Controller {
 		{
 			$this->load->model('users_model');
 			$this->users_model->set_users("1");
-			$this->load->view('pages/registration-success');
+			redirect('registration-success');
 		}
 		
 	}
