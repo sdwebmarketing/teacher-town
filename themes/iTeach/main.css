@@ -3,10 +3,11 @@ form .formItem > label { float: left; width: 20%; text-align: right; }
 form span.formGroup { float: left; width: 50%; }
 form span.formGroup span { float: left; clear: left; width: 100%; }
 input.timePicker { width: 80px; }
-form input[type=submit] { margin-left: 20%; }
+form input[type=submit] { margin-left: 20%; } input[type=submit].looseDefaults { margin-left: 0%; }
 form .addressChoices { display: none; }
 
 .hidden { display: none; }
+.left { float: left; }
 
 .listingsArea { padding-right: 5%; width: 35%; float: left; display: block; }
 .mapArea { width: 55%; float: left; display: block; margin-right: 5%; }

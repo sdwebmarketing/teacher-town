@@ -2,21 +2,27 @@
 
 class Search_model extends CI_model {
 	
-	public function get_teachers($id = "") 
-	{	
+	public function get_teacher($id = "")
+	{
 		if (!empty($id)) {
 			$sql = $this->db->query('select * from users where id=' . $id);
-			return $sql;
-		} else {
-			$sql = $this->db->query('select * from users where userTypeId = 1 order by name');
 			return $sql;
 		}
 	}
 	
-	public function get_teachers_by_location() {
+	public function get_teachers() 
+	{	
+		$sql = $this->db->query('select * from users where userTypeId = 1 order by name');
+		return $sql;
+	}
+	
+	public function get_teachers_by_location_r_xml() {
 		$center_lat=$this->input->get('lat');
 		$center_lng=$this->input->get('lng');
 		$radius=$this->input->get('radius');
+		if(empty($radius)) {
+			$radius=10;
+		}
 			
 		// Start XML file, create parent node
 		$dom = new DOMDocument("1.0");

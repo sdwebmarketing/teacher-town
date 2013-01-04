@@ -10,19 +10,22 @@
 			</div>
 		<?php }; ?>
 	</div>
-	<div>
-		<input type="text" id="addressInput" size="10"/>
-	    <select id="radiusSelect">
-			<option value="2" selected>2 miles</option>
-			<option value="5" selected>5 miles</option>
-			<option value="10" selected>10 miles</option>
+
+	<?php 
+	$attributes = array('method' => 'get');
+	echo form_open('search-listings',$attributes); ?>
+		<input type="text" id="addressInput" name="pc" />
+		<select id="radiusSelect">
+			<option value="2">2 miles</option>
+			<option value="5">5 miles</option>
+			<option value="10">10 miles</option>
 			<option value="25">25 miles</option>
 			<option value="50">50 miles</option>
 			<option value="100">100 miles</option>
 		</select>
-	
-		<input type="button" onclick="searchLocations()" value="Search"/>
-	</div>
+		<input type="button" class="searchLocations looseDefaults" id="searchLocations" value="Search" />
+		<input type="submit" class="useLocation looseDefaults" value="Use my location" />
+	</form>
 	
 	<div>
 		<select id="locationSelect" style="width:100%;visibility:hidden"></select>
